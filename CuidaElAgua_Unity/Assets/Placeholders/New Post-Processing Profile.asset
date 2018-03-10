@@ -101,13 +101,13 @@ MonoBehaviour:
     m_Settings:
       bloom:
         intensity: 0.36
-        threshold: 0.66
-        softKnee: 0.41
-        radius: 1
-        antiFlicker: 0
+        threshold: 1.25
+        softKnee: 0.181
+        radius: 2.92
+        antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 0
   colorGrading:
     m_Enabled: 1
     m_Settings:
@@ -296,11 +296,11 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0, g: 0, b: 0, a: 1}
+      color: {r: 0.119214974, g: 0.33511728, b: 0.46323532, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.535
-      smoothness: 0.317
-      roundness: 0.715
+      intensity: 0.632
+      smoothness: 0.642
+      roundness: 0.826
       mask: {fileID: 0}
       opacity: 1
       rounded: 0
