@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
-public class TuercaScript : MonoBehaviour {
+public class TuercaScript : Interactable {
 
 	public float squeezeTime = 0.2f;
 	public GameObject tuerca, llave,llavePivot;
@@ -11,25 +12,41 @@ public class TuercaScript : MonoBehaviour {
 	public GameObject[] fugas;
 	Vector3 originalScale;
 
+
+
 	void Awake(){
+		base.Initialize ();
 		//InvokeRepeating ("RotateTuerca", 0, squeezeTime *2);
 		originalScale = llave.transform.localScale;
 		llave.transform.localScale = Vector3.zero;
-		//RotateTuerca(5);
+
+
+
 	}
 
-	void Update(){
-	
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			RotateTuerca (5);
-		}
+	public override void Update ()
+	{
+		base.Update ();
+		buttonCanvas.LookAt (2 * transform.position - Camera.main.transform.position);
+	}
+
+	public override void Interact ()
+	{
+		base.Interact ();
+		RotateTuerca (3);
 	}
 
 	void RotateTuerca(int times){
 		StartCoroutine (RotateTuercaRoutine (times));
 	}
 
+
+
+
 	IEnumerator RotateTuercaRoutine(int loopCycle){
+
+		base.HideInteractionIcon ();
+		canInteract = false;
 
 		//Scale llave to make it appear
 		DOTween.To (
@@ -87,6 +104,8 @@ public class TuercaScript : MonoBehaviour {
 				2f
 			);
 		}
+
+
 
 	}
 	
