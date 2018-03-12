@@ -6,115 +6,88 @@ using DG.Tweening;
 public class TuercaScript : MonoBehaviour {
 
 	public float squeezeTime = 0.2f;
-	public GameObject llave, fugaAgua, tuercaPivot;
-	Vector3 originalScale, originalPosition;
-	public SpriteRenderer splatSprite;
+	public GameObject tuerca, llave,llavePivot;
+	public SpriteRenderer[] stains;
+	public GameObject[] fugas;
+	Vector3 originalScale;
 
-
-	// Use this for initialization
-	void Awake () {
-		//Gets references from original positions, locations and hides wrench
+	void Awake(){
+		//InvokeRepeating ("RotateTuerca", 0, squeezeTime *2);
 		originalScale = llave.transform.localScale;
-		originalPosition = llave.transform.localPosition;
 		llave.transform.localScale = Vector3.zero;
-		//CLoseTuerca ();
+		//RotateTuerca(5);
 	}
 
-	public void CloseTuerca(){
+	void Update(){
 	
-		StartCoroutine (CloseTuercaRoutine ());
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			RotateTuerca (5);
+		}
 	}
 
-	IEnumerator CloseTuercaRoutine(){
+	void RotateTuerca(int times){
+		StartCoroutine (RotateTuercaRoutine (times));
+	}
 
-		//Makes wrench appear
+	IEnumerator RotateTuercaRoutine(int loopCycle){
+
+		//Scale llave to make it appear
 		DOTween.To (
 			()=> llave.transform.localScale,
 			x=> llave.transform.localScale = x,
 			originalScale,
-			squeezeTime
+			0.5f
 		);
-		yield return new WaitForSeconds (squeezeTime);
+		yield return new WaitForSeconds (0.5f);
 
-		//RotateTuerca
-		RotateTuerca(60);
-		yield return new WaitForSeconds (squeezeTime);
+		for (int i = 0; i < loopCycle; i++) {
+			//Rotates tuerca 60 degrees
+			iTween.RotateAdd (tuerca.gameObject, iTween.Hash (
+				"x", 60,
+				"time", squeezeTime,
+				"easeType", iTween.EaseType.linear,
+				"islocal", true
+			));
+			//Rotates llave 60 degrees
+			iTween.RotateAdd (llavePivot.gameObject, iTween.Hash (
+				"x", 60,
+				"time", squeezeTime,
+				"easeType", iTween.EaseType.linear,
+				"islocal", true
+			));
 
-		//REPOSITION WRENCH
-			//Remove Wrench
-			DOTween.To (
-				()=> llave.transform.localPosition,
-				x=> llave.transform.localPosition = x,
-				new Vector3(originalPosition.x, originalPosition.y, originalPosition.z -0.5f),
-				squeezeTime
-			);
-
-			yield return new WaitForSeconds (squeezeTime * 2);
-
-			//Rotate Wrench Pivot
-			DOTween.To (
-				()=> tuercaPivot.transform.localRotation,
-				x=> tuercaPivot.transform.localRotation = x,
-				new Vector3(-60, 0, 0),
-				squeezeTime
-			);
 			yield return new WaitForSeconds (squeezeTime);
 
-			//Place Wrench
-			DOTween.To (
-				()=> llave.transform.localPosition,
-				x=> llave.transform.localPosition = x,
-				new Vector3(originalPosition.x, originalPosition.y, originalPosition.z),
-				squeezeTime
-			);
+			//Rotates llave -60 degrees
+			iTween.RotateAdd (llavePivot.gameObject, iTween.Hash (
+				"x", -60,
+				"time", squeezeTime,
+				"easeType", iTween.EaseType.linear,
+				"islocal", true
+			));
+
 			yield return new WaitForSeconds (squeezeTime);
-
-		//RotateTuerca
-		RotateTuerca(120);
-		yield return new WaitForSeconds (squeezeTime);
-
-		//Remove Wrench
-		DOTween.To (
-			()=> llave.transform.localPosition,
-			x=> llave.transform.localPosition = x,
-			new Vector3(originalPosition.x, originalPosition.y, originalPosition.z -0.5f),
-			squeezeTime
-		);
-
-		//Makes wrench shrink
+		}
 		DOTween.To (
 			()=> llave.transform.localScale,
 			x=> llave.transform.localScale = x,
 			Vector3.zero,
-			squeezeTime
+			0.5f
 		);
 
-		yield return new WaitForSeconds (squeezeTime);
-
-		fugaAgua.SetActive (false);
-
-		//Fades splash
-		DOTween.To (
-			()=> splatSprite.color,
-			x=> splatSprite.color = x,
-			new Color(0,0,0,0),
-			squeezeTime *3
-		);
-
-	}
-
-	void RotateTuerca(float angle){
-		DOTween.To (
-			()=> transform.localRotation,
-			x=> transform.localRotation = x,
-			new Vector3(angle, 0, 0),
-			squeezeTime
-		);
-	}
-
-	void Update(){
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			CloseTuerca ();
+		foreach (var item in fugas) {
+			item.SetActive (false);
 		}
+
+		foreach (var item in stains) {
+			DOTween.To (
+				()=> item.color,
+				x=> item.color = x,
+				new Color(0,0,0,0),
+				2f
+			);
+		}
+
 	}
+	
 }
