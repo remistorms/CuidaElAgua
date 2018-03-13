@@ -6,6 +6,7 @@ using DG.Tweening;
 public class CameraSystem : MonoBehaviour {
 
 	public static CameraSystem instance;
+	public bool smoothTransition = false;
 
 	public Camera mainCam;
 
@@ -15,8 +16,11 @@ public class CameraSystem : MonoBehaviour {
 	}
 
 	public void SwitchCamPosition(Transform newPosition, float lerpTime){
-	
-		mainCam.transform.DOMove (newPosition.position, lerpTime);
+		if (smoothTransition) {
+			mainCam.transform.DOMove (newPosition.position, lerpTime);
+		} else {
+			mainCam.transform.position = newPosition.position;
+		}
 	}
 
 	public void FadeOutCam(){

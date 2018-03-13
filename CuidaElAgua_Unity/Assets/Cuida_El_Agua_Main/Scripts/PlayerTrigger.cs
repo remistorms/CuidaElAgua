@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour {
 
+	public ShackScript shackRef;
+
 	// Use this for initialization
 	void Start () {
 		//Makes sure its a trigger and dissables rendere on start... how cool eh?
@@ -11,11 +13,18 @@ public class PlayerTrigger : MonoBehaviour {
 		GetComponent<MeshRenderer> ().enabled = false;
 	}
 	
-	void OnTriggerEnter(Collider other)
+	void OnTriggerExit(Collider other)
 	{
 		if (other.tag == "Player") {
-			Debug.Log ("Player has entered " + this.name + " trigger");
+			
+			shackRef.FadeInShack ();
+		}
+	}
 
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "Player" && !shackRef.isShakInvisible) {
+
+			shackRef.FadeOutShack ();
 		}
 	}
 }

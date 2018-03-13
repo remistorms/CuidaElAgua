@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			//Moves toward point
 			case "walkable":
-			Debug.Log ("Clicked object's tag = " + myHit.collider.tag);
+			Debug.Log ("Clicked object's tag = " + myHit.collider.tag + " name=" + myHit.collider.name);
 			MovesTowardPoint (hit.point);
 			break;
 
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 			break;
 
 			default:
-			Debug.Log ("Clicked object's tag = unknown");
+			Debug.Log ("Clicked object's tag = unknown" + myHit.collider.name);
 			break;
 		}
 	}

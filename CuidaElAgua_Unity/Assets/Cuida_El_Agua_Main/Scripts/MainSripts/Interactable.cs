@@ -15,10 +15,10 @@ public class Interactable : MonoBehaviour {
 
 	public virtual void Initialize(){
 		this.tag = "interactable";
-		if (GetComponent<SphereCollider>() == null) {
+		if (GetComponent<Collider>() == null) {
 			this.transform.gameObject.AddComponent<SphereCollider> ();
 		}
-		GetComponent<SphereCollider> ().isTrigger = true;
+		GetComponent<Collider> ().isTrigger = true;
 
 		originalCanvasSize = buttonCanvas.localScale;
 		buttonCanvas.localScale = Vector2.zero;

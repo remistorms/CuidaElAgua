@@ -8,7 +8,7 @@ public class ShackScript : MonoBehaviour {
 	public Camera shackCamera;
 	public GameObject doorPivot, shackTopMesh;
 	public Material normalMaterial, fadeMaterial;
-	public float fadeDuration = 1f;
+	public float fadeDuration = 2f;
 	public bool isShakInvisible = false;
 
 	void Update(){
