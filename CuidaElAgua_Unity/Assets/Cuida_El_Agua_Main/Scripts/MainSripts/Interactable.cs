@@ -32,9 +32,9 @@ public class Interactable : MonoBehaviour {
 	}
 
 	public virtual void Update(){
-		if ((Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, this.gameObject.transform.position) <= interactionDistance) && (canInteract == true)) {
+		/*if ((Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, this.gameObject.transform.position) <= interactionDistance) && (canInteract == true)) {
 			ShowInteractionIcon ();
-		}
+		}*/
 	}
 
 	public void ShowInteractionIcon(){

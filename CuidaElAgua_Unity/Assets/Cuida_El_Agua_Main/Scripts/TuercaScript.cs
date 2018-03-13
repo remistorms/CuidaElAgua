@@ -28,6 +28,10 @@ public class TuercaScript : Interactable {
 	{
 		base.Update ();
 		buttonCanvas.LookAt (2 * transform.position - Camera.main.transform.position);
+		//Check if player has required item in inventory
+		if ((Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, this.gameObject.transform.position) <= interactionDistance) && (canInteract == true)) {
+			ShowInteractionIcon ();
+		}
 	}
 
 	public override void Interact ()
