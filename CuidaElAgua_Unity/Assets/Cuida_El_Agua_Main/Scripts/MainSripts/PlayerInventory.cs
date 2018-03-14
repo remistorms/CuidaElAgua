@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour {
 
 	public static PlayerInventory instance;
 	public List<Item> obtainedItems;
+	public List<int> obtainedItemsIDS;
 	public Item[] allItems;
 
 	void Awake(){
@@ -17,6 +18,7 @@ public class PlayerInventory : MonoBehaviour {
 
 		//Add item to list
 		obtainedItems.Add(allItems[itemID]);
+		obtainedItemsIDS.Add (allItems [itemID].itemID);
 		//Add button to menu.... later on
 	}
 }

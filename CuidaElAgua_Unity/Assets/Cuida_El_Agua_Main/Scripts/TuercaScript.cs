@@ -4,52 +4,28 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class TuercaScript : Interactable {
+public class TuercaScript : MonoBehaviour {
 
-	public float squeezeTime = 0.2f;
+	float squeezeTime = 0.5f;
 	public GameObject tuerca, llave,llavePivot;
 	public SpriteRenderer[] stains;
 	public GameObject[] fugas;
 	Vector3 originalScale;
+	bool canInteract = true;
 
 
 
 	void Awake(){
-		base.Initialize ();
-		//InvokeRepeating ("RotateTuerca", 0, squeezeTime *2);
 		originalScale = llave.transform.localScale;
 		llave.transform.localScale = Vector3.zero;
-
-
-
 	}
 
-	public override void Update ()
-	{
-		base.Update ();
-		buttonCanvas.LookAt (2 * transform.position - Camera.main.transform.position);
-		//Check if player has required item in inventory
-		if ((Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, this.gameObject.transform.position) <= interactionDistance) && (canInteract == true)) {
-			ShowInteractionIcon ();
-		}
-	}
-
-	public override void Interact ()
-	{
-		base.Interact ();
-		RotateTuerca (3);
-	}
-
-	void RotateTuerca(int times){
+	public void RotateTuerca(int times){
 		StartCoroutine (RotateTuercaRoutine (times));
 	}
-
-
-
-
+		
 	IEnumerator RotateTuercaRoutine(int loopCycle){
 
-		base.HideInteractionIcon ();
 		canInteract = false;
 
 		//Scale llave to make it appear
@@ -109,7 +85,8 @@ public class TuercaScript : Interactable {
 			);
 		}
 
-
+		Debug.Log ("Add water here");
+		WaterMeter.instance.waterSlider.DOValue (WaterMeter.instance.waterSlider.value + 0.4f, 0.75f);
 
 	}
 	

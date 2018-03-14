@@ -7,8 +7,10 @@ using DG.Tweening;
 
 public class ItemsMenu : MonoBehaviour {
 
+	public GameObject inventorySprite;
 	public static ItemsMenu instance;
 	public float transitionSpeed = 0.1f;
+
 
 	RectTransform myRect;
 	public List<RectTransform> itemButtons;
@@ -132,5 +134,28 @@ public class ItemsMenu : MonoBehaviour {
 
 		GameObject runtimeButton = Instantiate (item, this.transform);
 	
+	}
+
+	public void AddItemToInventory(Sprite itemSprite){
+	
+		if (!this.gameObject.activeInHierarchy) {
+
+			this.gameObject.SetActive (true);
+
+			DOTween.To (
+				()=> transform.localScale,
+				x=> transform.localScale = x,
+				originalScale,
+				0.5f
+			);
+		}
+
+		GameObject newItemIcon = Instantiate (inventorySprite, this.gameObject.transform) as GameObject;
+		newItemIcon.GetComponent<Image> ().sprite = itemSprite;
+	}
+
+	void InstantiateSprite(){
+		
+
 	}
 }
