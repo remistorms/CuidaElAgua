@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour {
 
+	public bool playerHasControl = false;
 	public GameObject destinationPointer;
 	public static PlayerMovement instance;
 	public NavMeshAgent playerAgent;
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update(){
 		//Clicks and shoots a ray
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButtonDown(0) && playerHasControl) {
 			
 			myRay = mainCam.ScreenPointToRay (Input.mousePosition);
 
@@ -65,6 +66,10 @@ public class PlayerMovement : MonoBehaviour {
 
 		//Moves character towards point
 		playerAgent.SetDestination(point);
+	}
+
+	public void ReturnPlayerControl(){
+		playerHasControl = true;
 	}
 
 }
