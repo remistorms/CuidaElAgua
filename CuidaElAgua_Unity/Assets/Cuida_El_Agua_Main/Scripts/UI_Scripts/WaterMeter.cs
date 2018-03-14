@@ -27,7 +27,6 @@ public class WaterMeter : MonoBehaviour {
 	}
 
 	public void UpdateValueTween(float value){
-		waterSlider.value = value;
-		Debug.Log ("Updating value");
+
 	}
 }

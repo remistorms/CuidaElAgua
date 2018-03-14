@@ -112,7 +112,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       tonemapping:
-        tonemapper: 2
+        tonemapper: 1
         neutralBlackIn: 0.032
         neutralWhiteIn: 4.6
         neutralBlackOut: -0.004
@@ -120,17 +120,17 @@ MonoBehaviour:
         neutralWhiteLevel: 6.6
         neutralWhiteClip: 10
       basic:
-        postExposure: 1.5
+        postExposure: 1.2
         temperature: 0
         tint: 0
         hueShift: 1
         saturation: 1
         contrast: 1
       channelMixer:
-        red: {x: 1, y: 0, z: 0}
+        red: {x: 1, y: 0, z: 0.15}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 2
+        currentEditingChannel: 0
       colorWheels:
         mode: 0
         log:
@@ -149,14 +149,14 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 1
+              inSlope: 0
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
               time: 1
               value: 1
               inSlope: 1
-              outSlope: 1
+              outSlope: 0
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -278,13 +278,13 @@ MonoBehaviour:
   userLut:
     m_Enabled: 0
     m_Settings:
-      lut: {fileID: 2800000, guid: ab78a862493ed7f42a9d16bc994e6697, type: 3}
-      contribution: 1
+      lut: {fileID: 2800000, guid: 7a051dbda2d7bc447bee412427cd311e, type: 3}
+      contribution: 0.854
   chromaticAberration:
     m_Enabled: 0
     m_Settings:
-      spectralTexture: {fileID: 0}
-      intensity: 0.1
+      spectralTexture: {fileID: 2800000, guid: 1fe26ef1655e3424b8a9a77e4ef0523d, type: 3}
+      intensity: 0.608
   grain:
     m_Enabled: 0
     m_Settings:
@@ -296,16 +296,16 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.119214974, g: 0.33511728, b: 0.46323532, a: 1}
+      color: {r: 0, g: 0.17241406, b: 1, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.632
+      intensity: 0.585
       smoothness: 0.642
-      roundness: 0.826
+      roundness: 0.897
       mask: {fileID: 0}
       opacity: 1
       rounded: 0
   dithering:
-    m_Enabled: 1
+    m_Enabled: 0
   monitors:
     currentMonitorID: 0
     refreshOnPlay: 0

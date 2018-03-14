@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour {
 
+	public GameObject destinationPointer;
 	public static PlayerMovement instance;
 	public NavMeshAgent playerAgent;
 	Camera mainCam;
@@ -26,8 +27,9 @@ public class PlayerMovement : MonoBehaviour {
 			
 
 			//Moves toward point
-			case "walkable":
+		case "walkable":
 			Debug.Log ("Clicked object's tag = " + myHit.collider.tag + " name=" + myHit.collider.name);
+			DestinationPointer.instance.SetPointer (myHit.point);
 			MovesTowardPoint (hit.point);
 			break;
 
