@@ -9,6 +9,7 @@ public class IsoCamSystem : MonoBehaviour {
 	public float rotateSpeed = 0.2f;
 	public Transform playerRef;
 	public Camera isoCam;
+	public bool canRotate = true;
 
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
@@ -28,25 +29,42 @@ public class IsoCamSystem : MonoBehaviour {
 	}
 
 	public void RotateCamLeft(){
-	
-		iTween.RotateAdd (this.gameObject, iTween.Hash (
-			"y", 90,
-			"easeType", iTween.EaseType.linear,
-			"time", rotateSpeed
-		));
+
+		if (canRotate) {
+			canRotate = false;
+
+			iTween.RotateAdd (this.gameObject, iTween.Hash (
+				"y", 90,
+				"easeType", iTween.EaseType.linear,
+				"time", rotateSpeed,
+				"oncompletetarget", this.gameObject,
+				"oncomplete", "RotateAgain"
+			));
+		}
+
 	}
 
 	public void RotateCamRight(){
 
-		iTween.RotateAdd (this.gameObject, iTween.Hash (
-			"y", -90,
-			"easeType", iTween.EaseType.linear,
-			"time", rotateSpeed
-		));
+		if (canRotate) {
+			canRotate = false;
+			iTween.RotateAdd (this.gameObject, iTween.Hash (
+				"y", -90,
+				"easeType", iTween.EaseType.linear,
+				"time", rotateSpeed,
+				"oncompletetarget", this.gameObject,
+				"oncomplete", "RotateAgain"
+			));
+		}
+
 	}
 
 	void Awake(){
 		playerRef = GameObject.FindGameObjectWithTag ("Player").transform;
 		isoCam = Camera.main;
+	}
+
+	public void RotateAgain(){
+		canRotate = true;
 	}
 }

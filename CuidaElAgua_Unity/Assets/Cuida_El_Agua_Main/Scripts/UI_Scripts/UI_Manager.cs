@@ -71,12 +71,12 @@ public class UI_Manager : MonoBehaviour {
 		yield return new WaitForSeconds (fadeTime);
 		introText.text = "REM STORMS";
 		introText.DOFade (1, fadeTime);
-		yield return new WaitForSeconds (fadeTime);
+		yield return new WaitForSeconds (2);
 	
 		//FADE OUT and CHANGE TEXT
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = "ESTE DEMO ESTA EN FASE DE DESARROLLO, GRACIAS POR JUGAR...";
+		introText.text = "ESTE ES UN PROTOTIPO REALIZADO PARA DEMOSTRAR LAS MECANICAS DE JUEGO Y PRUEBAs DE CONCEPTO";
 		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (1, fadeTime);
 		yield return new WaitForSeconds (5);
@@ -93,12 +93,13 @@ public class UI_Manager : MonoBehaviour {
 		//FADE OUT and CHANGE TEXT
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = " ...2018, POCO ANTES DE LA SEQUIA GLOBAL... ";
-		yield return new WaitForSeconds (4);
+		introText.text = " ... 2018, POCO ANTES DE LA SEQUIA GLOBAL ... ";
+		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (1, fadeTime);
+		yield return new WaitForSeconds (3);
 
 		//FADE OUT
-		yield return new WaitForSeconds (6);
+
 		introText.DOFade (0, fadeTime);
 		yield return new WaitForSeconds (3);
 
@@ -106,9 +107,6 @@ public class UI_Manager : MonoBehaviour {
 		canvasGroups [0].DOFade (0, 3*fadeTime);
 		yield return new WaitForSeconds (3*fadeTime);
 		canvasGroups [0].transform.gameObject.SetActive (false);
-
-		//Changes music
-		//SoundManager.instance.PlayMusic (1);
 
 		//Spawn player
 		playerPointLight.intensity = 10;

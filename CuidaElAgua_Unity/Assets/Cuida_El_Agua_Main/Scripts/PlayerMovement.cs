@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 			
 
 			//Moves toward point
-		case "walkable":
+			case "walkable":
 			Debug.Log ("Clicked object's tag = " + myHit.collider.tag + " name=" + myHit.collider.name);
 			DestinationPointer.instance.SetPointer (myHit.point);
 			MovesTowardPoint (hit.point);
@@ -47,8 +47,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Update(){
+
 		//Clicks and shoots a ray
-		if (Input.GetMouseButtonDown(0) && playerHasControl) {
+		if (Input.GetMouseButtonDown(0)  && playerHasControl) {
 			
 			myRay = mainCam.ScreenPointToRay (Input.mousePosition);
 

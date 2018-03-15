@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 9e0e902679205c9418605013cd13166d
+timeCreated: 1521097101
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: A-Space Light Demo
+  fontNames:
+  - A-Space Light Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 08acdfc6f7901e4458426efd70d46e4b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

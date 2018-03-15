@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class activateDoorButton : MonoBehaviour {
 
@@ -19,6 +20,8 @@ public class activateDoorButton : MonoBehaviour {
 		UI_Manager.instance.panels[0].SetActive(true);
 		UI_Manager.instance.canvasGroups [0].alpha = 0;
 		UI_Manager.instance.canvasGroups [0].DOFade (1, 2f);
-
+		SceneManager.LoadScene (1);
 	}
+
+
 }
