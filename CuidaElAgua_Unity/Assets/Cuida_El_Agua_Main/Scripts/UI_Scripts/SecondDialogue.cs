@@ -5,18 +5,21 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class FirstDialogue : MonoBehaviour {
+public class SecondDialogue : MonoBehaviour {
 
+	public GameObject crate;
+	public bool secondDialogueEnabled = false;
 	public int currentDialogueID = 0;
-	public Button nextButton, secondButton;
+	public Button nextButton;
 	public TMP_Text dialogueText;
+	public GameObject vortexSliderGO;
 
 	[Header("Dialogo")]
 	[TextArea(2,5)]
 	public string[] dialogueParts;
 
 	public void ShowNextDialogue(){
-		if (currentDialogueID <= dialogueParts.Length-2) 
+		if (currentDialogueID <= dialogueParts.Length-2 && secondDialogueEnabled) 
 		{
 			Debug.Log ("Showing dialogue");	
 			currentDialogueID++;
@@ -28,9 +31,9 @@ public class FirstDialogue : MonoBehaviour {
 			StartCoroutine (HideDialogue ());
 			//ACTIVATE PLAYER MOVEMENT
 			PlayerMovement.instance.ReturnPlayerControl();
-			SwitchDialogues ();
-			nextButton.gameObject.SetActive(false);
-			secondButton.gameObject.SetActive (true);
+			//Activate vortex slider
+			vortexSliderGO.SetActive(true);
+			crate.GetComponent<NewInteractable> ().enabled = true;
 		}
 	}
 
@@ -53,20 +56,18 @@ public class FirstDialogue : MonoBehaviour {
 
 		//ACTIVATE PLAYER MOVEMENT
 		PlayerMovement.instance.ReturnPlayerControl();
+
+		yield return new WaitForSeconds (2);
+		dialogueText.text = dialogueParts [0];
 	}
 
-	public void SwitchDialogues(){
-		GetComponent<SecondDialogue> ().enabled = true;
-		GetComponent<SecondDialogue> ().secondDialogueEnabled = true;
-		//GetComponent<SecondDialogue> ().ShowFirstText ();
-		GetComponent<FirstDialogue> ().enabled = false;
-		nextButton.transform.gameObject.SetActive (false);
-		secondButton.transform.gameObject.SetActive (true);
-		//Destroy (gameObject.GetComponent<FirstDialogue> (), 3);
-	
+
+	public void UpdateSliderVisibility(float newAlpha){
+		vortexSliderGO.GetComponent<CanvasGroup> ().alpha = newAlpha;
 	}
 
-	void Start(){
-		//secondButton.transform.gameObject.SetActive (false);
+	public void UpdateSliderFill(float newFill){
+		vortexSliderGO.GetComponent<Slider> ().value = newFill;
 	}
+
 }

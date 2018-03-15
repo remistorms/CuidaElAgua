@@ -10,6 +10,7 @@ public class WaterMeter : MonoBehaviour {
 	public Slider waterSlider;
 	public float totalWater = 0;
 	public bool isFull = false;
+	public bool callScientist = false;
 
 	void Awake(){
 		instance = this;
@@ -18,15 +19,30 @@ public class WaterMeter : MonoBehaviour {
 	}
 
 	public void AddWater(int amount){
+		
 		Debug.Log ("Adding water to meter");
-		float newValue = waterSlider.value + amount / 100;
+		float newAmount = waterSlider.value + amount / 100;
 
-		waterSlider.value = newValue;
+		waterSlider.DOValue (newAmount, 1);
 
+		//float newValue = waterSlider.value + amount / 100;
+
+		if (waterSlider.value >= 1) {
+			//waterSlider.value = 1;
+			isFull = true;
+		}
 
 	}
 
-	public void UpdateValueTween(float value){
-
+	void FixedUpdate(){
+		if (waterSlider.value >= 1 && callScientist == false) {
+			callScientist = true;
+			isFull = true;
+			Debug.Log ("Call scientist");
+			UI_Manager.instance.ShowDialogueRoutine ();
+			
+		}
 	}
+
+
 }

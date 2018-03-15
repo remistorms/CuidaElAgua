@@ -67,26 +67,28 @@ public class UI_Manager : MonoBehaviour {
 	IEnumerator StartRoutine(){
 		//FADE IN TEXT
 		yield return new WaitForSeconds (fadeTime);
+		introText.text = "REM STORMS";
 		introText.DOFade (1, fadeTime);
+		yield return new WaitForSeconds (fadeTime);
 	
 		//FADE OUT and CHANGE TEXT
-		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = "ESTE DEMO ESTA EN FASE DE DESARROLLO, GRACIAS POR JUGAR";
-		yield return new WaitForSeconds (5);
+		introText.text = "ESTE DEMO ESTA EN FASE DE DESARROLLO, GRACIAS POR JUGAR...";
+		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (1, fadeTime);
+		yield return new WaitForSeconds (5);
 
+		/*
 		//FADE OUT and CHANGE TEXT
 		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
 		introText.text = " ''MILES DE PERSONAS HAN SOBREVIVIDO SIN AMOR.... NADIE HA SOBREVIVIDO SIN AGUA...'' ";
 		yield return new WaitForSeconds (fadeTime);
-		introText.DOFade (1, fadeTime);
+		introText.DOFade (1, fadeTime);*/
 
 		//FADE OUT and CHANGE TEXT
-		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
 		introText.text = " ...2018, POCO ANTES DE LA SEQUIA GLOBAL... ";
@@ -134,10 +136,15 @@ public class UI_Manager : MonoBehaviour {
 
 	}
 
+	public void ShowDialogueRoutine(){
+		StartCoroutine (ShowDialogue ());
+	}
+
 	IEnumerator ShowDialogue(){
 	
-		yield return new WaitForSeconds (2);
-
+		yield return new WaitForSeconds (1);
+		DisablePanels ();
+		playerRef.GetComponent<PlayerMovement> ().playerHasControl = false;
 		panels [1].SetActive (true);
 		canvasGroups [1].alpha = 0;
 		canvasGroups [1].DOFade (1, 2);

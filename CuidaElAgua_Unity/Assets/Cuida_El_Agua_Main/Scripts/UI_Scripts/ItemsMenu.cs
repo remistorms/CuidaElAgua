@@ -151,6 +151,7 @@ public class ItemsMenu : MonoBehaviour {
 		}
 
 		GameObject newItemIcon = Instantiate (inventorySprite, this.gameObject.transform) as GameObject;
+		gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (orignalWidth * transform.childCount, orignalWidth);
 		newItemIcon.GetComponent<Image> ().sprite = itemSprite;
 	}
 

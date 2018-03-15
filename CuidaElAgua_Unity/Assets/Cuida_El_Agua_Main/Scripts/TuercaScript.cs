@@ -86,7 +86,9 @@ public class TuercaScript : MonoBehaviour {
 		}
 
 		Debug.Log ("Add water here");
+		//THIS WORKS; IF IT CHANGE IT I DONT KNOW
 		WaterMeter.instance.waterSlider.DOValue (WaterMeter.instance.waterSlider.value + 0.4f, 0.75f);
+		//WaterMeter.instance.AddWater(40);
 
 	}
 	
