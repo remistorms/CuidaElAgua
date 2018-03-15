@@ -31,6 +31,8 @@ public class FirstDialogue : MonoBehaviour {
 			SwitchDialogues ();
 			nextButton.gameObject.SetActive(false);
 			secondButton.gameObject.SetActive (true);
+			//Changes music
+			SoundManager.instance.PlayMusic (1);
 		}
 	}
 

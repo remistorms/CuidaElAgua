@@ -65,6 +65,8 @@ public class UI_Manager : MonoBehaviour {
 	float fadeTime = 2;
 
 	IEnumerator StartRoutine(){
+
+		SoundManager.instance.PlayMusic (0);
 		//FADE IN TEXT
 		yield return new WaitForSeconds (fadeTime);
 		introText.text = "REM STORMS";
@@ -104,6 +106,9 @@ public class UI_Manager : MonoBehaviour {
 		canvasGroups [0].DOFade (0, 3*fadeTime);
 		yield return new WaitForSeconds (3*fadeTime);
 		canvasGroups [0].transform.gameObject.SetActive (false);
+
+		//Changes music
+		//SoundManager.instance.PlayMusic (1);
 
 		//Spawn player
 		playerPointLight.intensity = 10;
