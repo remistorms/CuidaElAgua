@@ -8,6 +8,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cuida_El_Agua_Main/Scenes/Demo_Scene_01.unity
     guid: 3a37913321067e1478f3bd537a84d8f7
-  - enabled: 1
-    path: Assets/Cuida_El_Agua_Main/Scenes/EndGameScene.unity
-    guid: cd285eee9f4b1124cb13ca0bb24a7f0f

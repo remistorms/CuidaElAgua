@@ -18,8 +18,12 @@ public class SecondDialogue : MonoBehaviour {
 	[TextArea(2,5)]
 	public string[] dialogueParts;
 
+	void Awake(){
+		//secondDialogueEnabled = false;
+	}
+
 	public void ShowNextDialogue(){
-		if (currentDialogueID <= dialogueParts.Length-2 && secondDialogueEnabled) 
+		if (currentDialogueID <= dialogueParts.Length -2 && secondDialogueEnabled) 
 		{
 			Debug.Log ("Showing dialogue");	
 			currentDialogueID++;

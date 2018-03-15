@@ -69,17 +69,25 @@ public class UI_Manager : MonoBehaviour {
 		SoundManager.instance.PlayMusic (0);
 		//FADE IN TEXT
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = "REM STORMS";
+		introText.text = "El siguiente prototipo está en fase Beta y no necesariamente refleja la versión final del juego...";
 		introText.DOFade (1, fadeTime);
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (6);
 	
 		//FADE OUT and CHANGE TEXT
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = "ESTE ES UN PROTOTIPO REALIZADO PARA DEMOSTRAR LAS MECANICAS DE JUEGO Y PRUEBAs DE CONCEPTO";
+		introText.text = "Un juego de Rem Storms";
 		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (1, fadeTime);
 		yield return new WaitForSeconds (5);
+
+		//FADE OUT and CHANGE TEXT
+		introText.DOFade (0f, fadeTime);
+		yield return new WaitForSeconds (fadeTime);
+		introText.text = "Una gota de esperanza";
+		yield return new WaitForSeconds (fadeTime);
+		introText.DOFade (1, fadeTime);
+		yield return new WaitForSeconds (10);
 
 		/*
 		//FADE OUT and CHANGE TEXT
@@ -93,10 +101,10 @@ public class UI_Manager : MonoBehaviour {
 		//FADE OUT and CHANGE TEXT
 		introText.DOFade (0f, fadeTime);
 		yield return new WaitForSeconds (fadeTime);
-		introText.text = " ... 2018, POCO ANTES DE LA SEQUIA GLOBAL ... ";
+		introText.text = " Mayo, 2025. Poco antes de la gran sequia que casi terminaría con la humanidad... ";
 		yield return new WaitForSeconds (fadeTime);
 		introText.DOFade (1, fadeTime);
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (10);
 
 		//FADE OUT
 
